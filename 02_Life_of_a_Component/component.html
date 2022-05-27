@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+</div>
+<div id="app-jsx">
+    
+</div>
+<script src="react/react.js"></script>
+<script src="react/react-dom.js"></script>
+<script src="react/babel.js"></script>
+<script type="text/babel">
+    const MyComponentJSX = () => {
+        return <span>Hello from <em>JSX</em></span>
+    };
+    
+    const GreetComponent = (properties) => {
+        return <div>Hello <em>{properties.name}</em></div>
+    };
+    
+    const FriendComponent = ({name}) => {
+      return <div><b>{name}</b>, you are my friend.</div>
+    }
+    
+    const FavoriteComponent = ({favoriteFood, favoriteDrink}) => {
+        return <div>My favorite food is {favoriteFood} and my favorite drink is {favoriteDrink}!</div>
+    }
+    
+    const DefaultJobComponent = ({name, job}) => {
+        return <div>My name is {name} and my job is {job}</div>
+    }
+    
+    DefaultJobComponent.defaultProps = {job: "Boat Captain"};
+    
+    class MyClassComponent extends React.Component {
+        render() {
+            return <span>Custom <b>Class</b></span>
+        }
+    }
+    
+    ReactDOM.render(
+        <div>
+            <MyClassComponent/> 
+            <GreetComponent name="Kathy"/>
+            <MyComponentJSX/>
+            <FriendComponent name="Alex"/>
+            <FavoriteComponent favoriteFood="Lemons" favoriteDrink="Lemon Juice"/>
+            <DefaultJobComponent name="Captain Ahab"/>
+        </div>,
+        document.getElementById("app-jsx")
+    );
+</script>
+</body>
+<script>
+    const MyComponent = () => {return React.createElement('span', null, 'CUSTOM COMPONENT')};
+    ReactDOM.render(
+        MyComponent(),
+        document.getElementById('app')
+    );
+</script>
+</html>
